@@ -3,9 +3,7 @@
     "start": "concurrently \"npm start --prefix backend\" \"npm start --prefix frontend\""
   },
   "dependencies": {
+    "concurrently": "^9.2.0",
     "styled-components": "^6.1.19"
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.0"
   }
 }
