@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
   }
 }
