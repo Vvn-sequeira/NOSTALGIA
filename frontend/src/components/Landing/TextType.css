@@ -1,0 +1,35 @@
+.text-type {
+    display: inline-block;
+    white-space: pre-wrap;
+    
+  }
+  
+  .text-type__cursor {
+    margin-left: 0.25rem;
+    display: inline-block;
+    opacity: 1;
+  }
+  
+  .text-type__cursor--hidden {
+    display: none;
+  }
+
+  .hello{
+    margin-top: 3rem  ;
+     font-size: 50px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  @media  (max-width : 414px){
+    .hello{
+      font-size: 35px ;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+   }
+  }

@@ -1,0 +1,13 @@
+.write-dairy-form{
+     margin-top: 5rem  ;
+     margin-bottom: 7rem  ;
+}
+.write-dairy-input:hover{
+    box-shadow: 0px 0px 8px #14b8a6;
+}
+
+.write-dairy-Date{
+     display: flex;
+     flex-direction: row-reverse;
+     margin-bottom: 2.5rem ;
+}
