@@ -2,108 +2,94 @@ import React, { useState } from "react";
 import "./Dairy.css";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
-import { format } from "date-fns";
-import GreenBtn from "../GreenBtn";
-import DatePicker from "../DatePicker";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
-import "../Forms/DateTime.css";
+import GreenBtn from "../GreenBtn";
 import axios from "axios";
 
-
 function WriteDairy() {
-  let maxDate = new Date();
-  let todaysDate = new Date();
-  const formatted = todaysDate.toLocaleString("en-IN", {
+  const maxDate = new Date();
+  const formatted = maxDate.toLocaleString("en-IN", {
     weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
   });
 
-  const [date, setDate] = useState(() => formatted);
+  const [date, setDate] = useState(formatted);
+  const [formData, setFormData] = useState({
+    date: null,
+    heading: "",
+    text: "",
+  });
 
-  const [formData , setFormData] = useState(
-    {
-      date : null ,
-      heading : "",
-      text : ""
-    }
-  )
-
-  let OnchangeDate = async (e) => {
-    let UTC = new Date(e.value).toISOString();
-    setFormData( (prev) => ( { ...prev, date: UTC }));
+  const OnchangeDate = (e) => {
+    const UTC = new Date(e.value).toISOString();
+    setFormData((prev) => ({ ...prev, date: UTC }));
   };
 
-  let OnSubmit = async (e)=> {
+  const OnSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://nostalgia-cijq.onrender.com/MyDiary" , formData , {
-        withCredentials: true
+      await axios.post("https://nostalgia-cijq.onrender.com/MyDiary", formData, {
+        withCredentials: true,
       });
-      console.log("Res sent to the backend ")      
+      console.log("Res sent to the backend");
     } catch (error) {
-       const errmsg = error.response?.data?.message || "hey somthing went wrong Contact Developer"
-       alert(errmsg)
-       return ; 
+      const errmsg =
+        error.response?.data?.message ||
+        "Hey, something went wrong. Contact the developer.";
+      alert(errmsg);
     }
-  }
-
-
-
+  };
 
   return (
-    <>
-      <Container>
-        <Form className="write-dairy-form" onSubmit={OnSubmit}>
-          <h6 className="write-dairy-Date">
-            Today's Date : {date ? date.toLocaleString() : "Loading..."}
-          </h6>
+    <Container>
+      <Form className="write-dairy-form" onSubmit={OnSubmit}>
+        <h6 className="write-dairy-Date">Today's Date: {date}</h6>
 
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label style={{ color: "#14b8a6" }}>Date </Form.Label>
-            <div className="icon-tweaks">
-              <DateTimePickerComponent
-                placeholder="Please Select Date & Time"
-                max={maxDate}
-                format={"yyyy-MM-dd HH:mm"}
-                value={formData.Date}
-                onChange={OnchangeDate}
-                
-              />
-            </div>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label style={{ color: "#14b8a6" }}>Heading </Form.Label>
-            <Form.Control
-              className="write-dairy-input"
-              type="Text"
-              placeholder=" Heading "
-              onChange={(e)=> {
-                setFormData( (prev)=>({...prev , heading: e.target.value}))
-              }}
+        <Form.Group className="mb-3" controlId="formDate">
+          <Form.Label style={{ color: "#14b8a6" }}>Date</Form.Label>
+          <div className="icon-tweaks">
+            <DateTimePickerComponent
+              placeholder="Please Select Date & Time"
+              max={maxDate}
+              format={"yyyy-MM-dd HH:mm"}
+              value={formData.date}
+              onChange={OnchangeDate}
             />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label style={{ color: "#14b8a6" }}>
-              Example textarea
-            </Form.Label>
-            <Form.Control
-              className="write-dairy-input"
-              as="textarea"
-              rows={12}
-              placeholder="How was Your Day Today ? "
-              onChange={(e)=> {
-                setFormData( (prev)=>({...prev , text: e.target.value}))
-              }}
-            />
-          </Form.Group>
+          </div>
+        </Form.Group>
 
-          <GreenBtn  ></GreenBtn>
-        </Form>
-      </Container>
-    </>
+        <Form.Group className="mb-3" controlId="formHeading">
+          <Form.Label style={{ color: "#14b8a6" }}>Heading</Form.Label>
+          <Form.Control
+            className="write-dairy-input"
+            type="text"
+            placeholder="Heading"
+            value={formData.heading}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, heading: e.target.value }))
+            }
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formText">
+          <Form.Label style={{ color: "#14b8a6" }}>Your Diary</Form.Label>
+          <Form.Control
+            className="write-dairy-input"
+            as="textarea"
+            rows={12}
+            placeholder="How was your day today?"
+            value={formData.text}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, text: e.target.value }))
+            }
+          />
+        </Form.Group>
+
+        <GreenBtn type="submit" />
+      </Form>
+    </Container>
   );
 }
 

@@ -76,19 +76,18 @@ let Signup = function(){
      )
 }
 const StyledWrapper = styled.div`
+  --bg-light: #efefef;
+  --bg-dark: #707070;
+  --clr: #58bc82;
+  --clr-alpha: rgba(11, 168, 53, 0.28);
+
   .form {
-    --bg-light: #efefef;
-    --bg-dark: #707070;
-    --clr: #58bc82;
-    --clr-alpha:rgba(11, 168, 53, 0.28);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     max-width: 300px;
-    justify-content: center ;
-    align-items : center ;
-
+    justify-content: center;
   }
 
   .form .input-span {
@@ -130,7 +129,7 @@ const StyledWrapper = styled.div`
     align-items: center;
     gap: 0.5rem;
     border-radius: 3rem;
-    background-color:  #efefef;
+    background-color: var(--bg-light);
     color: var(--clr);
     border: none;
     cursor: pointer;
@@ -140,8 +139,8 @@ const StyledWrapper = styled.div`
   }
 
   .form .submit:hover {
-    background-color: white ;
-    border : 2px solid var(--clr);
+    background-color: white;
+    border: 2px solid var(--clr);
     color: var(--bg-dark);
   }
 
@@ -153,15 +152,14 @@ const StyledWrapper = styled.div`
   .span a {
     color: var(--clr);
   }
-  
-  .centerdiv{
-   display: flex;
-   justify-content : center ;
-   align-items : center ;
-   margin-top  : 5% ;
-   margin-bottom : 5% ; 
-  }
-  `;
 
+  .centerdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+`;
 
 export default Signup;

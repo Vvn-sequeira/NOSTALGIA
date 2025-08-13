@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "../Forms/DateTime.css";
 import axios from "axios";
-import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -13,11 +11,6 @@ import Container from "react-bootstrap/Container";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import GreenBtn from "../GreenBtn";
 function EmailForm() {
-  // let [From , setFrom ] = useState(null)
-  // let [To , setTO ] = useState(null)
-  // let [Subject , setSubject ] = useState(null)
-  // let [Text , setText ] = useState(null)
-  // let [URL , setURL] = useState(null)
 
   let minDate = new Date();
 

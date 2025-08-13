@@ -1,6 +1,5 @@
 import React from "react"
 import TextType from './TextType';
-import AnimatedList from './AnimatedList'
 import Tablett from "./Tablett";
 import HomeBtnn from "./HomeBtnn";
 import Cardd from "./Cardd";

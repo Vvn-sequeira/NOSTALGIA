@@ -152,7 +152,7 @@ const TextType = ({
 
   const shouldHideCursor =
     hideCursorWhileTyping &&
-    (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
+    (currentCharIndex < (textArray[currentTextIndex]?.length || 0) || isDeleting)
 
   return createElement(
     Component,
