@@ -70,7 +70,7 @@ app.post("/api/logout"   , verifyToken , (req, res)=> {
      res.send("you are logged out ")
 })
 // Login
-app.post("/login", async (req, res) => {
+app.post("/login",  async (req, res) => {
   try {
     const data = req.body;
     const findUser = await user.findOne({ email: data.email });

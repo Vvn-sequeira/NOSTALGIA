@@ -42,7 +42,7 @@ function Navbar() {
 
   let logout = async()=> {
     try {
-      await axios.post("http://localhost:8000/api/logout" , {} , {
+      await axios.post("https://nostalgia-cijq.onrender.com/api/logout" , {} , {
         withCredentials : true
       })
       console.log("succesfully Loged out ")
