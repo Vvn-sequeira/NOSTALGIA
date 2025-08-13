@@ -94,17 +94,16 @@ app.post("/login",  async (req, res) => {
       });
     }
 
-    const token = jwt.sign(
+    const vivi = jwt.sign(
       { username: findUser.email, id: findUser._id },
       "viviviviv"
     );
 
-    res.cookie("token", token, {
+    res.cookie("token", vivi, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-      path: "/", // send cookie with all requests to your domain
+      secure:true,
+      sameSite: "None",
+      maxAge: 1000 * 60 * 60 * 24, 
     });
 
     console.log("Login was successful");
@@ -148,6 +147,7 @@ app.post("/signup" , async (req, res) => {
 
     const findUser = await user.findOne({email : data.email })
     console.log("the user that logged in just now : " , findUser);
+
     const vivi = jwt.sign({ email: findUser.email , id: findUser._id  }, "viviviviv");
 
     res.cookie("token", vivi, {
