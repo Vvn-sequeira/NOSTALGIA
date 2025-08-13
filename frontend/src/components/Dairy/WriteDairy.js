@@ -38,7 +38,7 @@ function WriteDairy() {
   let OnSubmit = async (e)=> {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/MyDiary" , formData , {
+      await axios.post("https://nostalgia-cijq.onrender.com/MyDiary" , formData , {
         withCredentials: true
       });
       console.log("Res sent to the backend ")      

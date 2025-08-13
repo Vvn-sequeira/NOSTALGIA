@@ -48,7 +48,7 @@ function EmailForm() {
     e.preventDefault();
 
     try {
-      let res = await axios.post("http://localhost:8000/GetEmail", FormData ,{
+      let res = await axios.post("https://nostalgia-cijq.onrender.com/GetEmail", FormData ,{
         headers: {
           "Content-Type": "application/json"
         },

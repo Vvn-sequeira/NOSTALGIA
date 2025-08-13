@@ -10,7 +10,7 @@ function ShowEmail() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/getEmail", {
+      .get("https://nostalgia-cijq.onrender.com/api/getEmail", {
         withCredentials: true,
       })
       .then((res) => {
@@ -27,7 +27,7 @@ function ShowEmail() {
      if(!window.confirm("Delete this Email?")) return ;
 
      try {
-      await axios.delete(`http://localhost:8000/api/deleteEmail/${id}`, {
+      await axios.delete(`https://nostalgia-cijq.onrender.com/api/deleteEmail/${id}`, {
         withCredentials: true
       }).catch( (err)=> {
          console.error(err);

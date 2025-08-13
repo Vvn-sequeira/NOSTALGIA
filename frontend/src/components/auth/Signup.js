@@ -20,7 +20,7 @@ let Signup = function(){
   let onsubmit = async(e)=> {
      e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/signup" , formdata , {
+      await axios.post("https://nostalgia-cijq.onrender.com/signup" , formdata , {
         withCredentials: true
        }) 
        console.log("the data has been sent to the backend ") 
