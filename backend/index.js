@@ -39,8 +39,8 @@ function compareAsync(password, hash) {
 }
 
 
-app.listen(PORT, () => {
-  console.log("app is connected to the ", PORT);
+app.listen(process.env.PORT, () => {
+  console.log("app is connected to the ", process.env.PORT);
   mongoose.connect(URL);
   console.log("Mongo DB is connected ");
 });
@@ -77,7 +77,7 @@ app.post("/login",  async (req, res) => {
      console.log("this is the user that is trying to Log in : ", findUser);
     if (!findUser || findUser === null) {
       console.log("not allowed to log in ");
-       res.status(500).json({
+       res.status(401).json({
         success: false,
         message: "User not found. Please sign up.",
       });
@@ -88,7 +88,7 @@ app.post("/login",  async (req, res) => {
     console.log(isMatch);
 
     if (!isMatch) {
-      return res.status(500).json({
+      return res.status(401).json({
         success: false,
         message: "Email or password is incorrect.",
       });
@@ -103,6 +103,8 @@ app.post("/login",  async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      path: "/", // send cookie with all requests to your domain
     });
 
     console.log("Login was successful");
