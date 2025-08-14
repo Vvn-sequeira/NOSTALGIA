@@ -14,11 +14,10 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   URL = process.env.MONGO_URL;
 
-  app.options("*", cors({
+  app.options("/*", cors({
     origin: "https://nostalgia-theta.vercel.app",
     credentials: true
   }));
-  
   app.use(cors({
     origin: "https://nostalgia-theta.vercel.app",
     credentials: true,

@@ -88,7 +88,6 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, #00000041, #b2e0a1f0, #b2e0a1b4, #b2e0a15f, #fffcfca9, #fffcfca9);
-  box-shadow: 1px 1px 40px rgba(21, 31, 40, 0.97);
 }
 
 .tablet-heading {
