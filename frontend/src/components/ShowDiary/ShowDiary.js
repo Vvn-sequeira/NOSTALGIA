@@ -5,12 +5,14 @@ import Card from "react-bootstrap/Card";
 import CardEm from "./CardDiary";
 import "../ShowEmail/ShowEmail.css";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 function ShowDiary() {
   const [diary, setdiary] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://nostalgia-cijq.onrender.com/api/getDiary", {
+      .get(`${apiUrl}/api/getDiary`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -28,7 +30,7 @@ function ShowDiary() {
      if(!window.confirm("Delete this Email?")) return ;
 
      try {
-      await axios.delete(`https://nostalgia-cijq.onrender.com/api/deleteDiary/${id}`, {
+      await axios.delete(`${apiUrl}/api/deleteDiary/${id}`, {
         withCredentials: true
       }).catch( (err)=> {
          console.error(err);

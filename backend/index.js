@@ -4,7 +4,7 @@ const express = require("express"),
   app = express(),
   nodemailer = require("nodemailer"),
   cron = require("node-cron"),
-  PORT = 8000,
+  PORT = process.env.PORT || 8000,
   cors = require("cors"),
   Email = require("./Schema/SendEmailSchema"), // Email Schema
   Diary = require("./Schema/DiarySchema"),  // Diary Schema
@@ -17,19 +17,14 @@ const express = require("express"),
   const cookieParser = require("cookie-parser")
   app.use(cookieParser()); // Use cookieParser 
 
-
   app.use(cors({
-    origin: "https://nostalgia-theta.vercel.app",
+    origin: process.env.FRONTEND_LINK,
     credentials: true
   }));
   
- 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); // Required to parse JSON bodies 
-
-
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -43,9 +38,8 @@ function compareAsync(password, hash) {
   });
 }
 
-
-app.listen(process.env.PORT, () => {
-  console.log("app is connected to the ", process.env.PORT);
+app.listen(PORT, () => {
+  console.log("app is connected to the ", PORT);
   mongoose.connect(URL);
   console.log("Mongo DB is connected ");
 });
@@ -68,8 +62,8 @@ app.post("/api/logout"   , verifyToken , (req, res)=> {
    
   res.clearCookie("token", {
     httpOnly: true,
-    secure: true,
-    sameSite:"None",
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
   });
   
      res.send("you are logged out ")
@@ -77,7 +71,9 @@ app.post("/api/logout"   , verifyToken , (req, res)=> {
 // Login
 app.post("/login",  async (req, res) => {
   try {
+    console.log("Enterd the Login verification route ")
     const data = req.body;
+    console.log("the data that user sent " , data)
     const findUser = await user.findOne({ email: data.email });
      console.log("this is the user that is trying to Log in : ", findUser);
     if (!findUser || findUser === null) {
@@ -99,16 +95,13 @@ app.post("/login",  async (req, res) => {
       });
     }
 
-    const vivi = jwt.sign(
-      { username: findUser.email, id: findUser._id },
-      "viviviviv"
-    );
+    const vivi = jwt.sign({ email: findUser.email , id: findUser._id  }, "viviviviv");
 
     res.cookie("token", vivi, {
       httpOnly: true,
-      secure:true,
-      sameSite: "None",
-      maxAge: 1000 * 60 * 60 * 24, 
+      secure: process.env.NODE_ENV === "production", 
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      maxAge: 1000 * 60 * 60 * 24,
     });
 
     console.log("Login was successful");
@@ -116,7 +109,8 @@ app.post("/login",  async (req, res) => {
       success: true,
       message: "Login successful",
     });
-
+    res.send("login successfullllll ")
+    
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({
@@ -124,14 +118,18 @@ app.post("/login",  async (req, res) => {
       message: error.message || "Something went wrong during login.",
     });
   }
+
+
+  
 });
 // SignUP
 app.post("/signup" , async (req, res) => {
 
   try {
     const data = req.body;
-  
+   console.log(req.body);
     let UniqEmail = await user.findOne({email : data.email })
+    console.log(UniqEmail)
     if(UniqEmail)
     {
       console.log("the user Email is alredy Exist");
@@ -150,6 +148,7 @@ app.post("/signup" , async (req, res) => {
     await sampleuser.save();
     console.log("User login details are stored");
 
+    console.log("now checking the user and creating cookie for the user "); 
     const findUser = await user.findOne({email : data.email })
     console.log("the user that logged in just now : " , findUser);
 
@@ -157,9 +156,9 @@ app.post("/signup" , async (req, res) => {
 
     res.cookie("token", vivi, {
       httpOnly: true,
-      secure:true,
-      sameSite: "None",
-      maxAge: 1000 * 60 * 60 * 24, 
+      secure: process.env.NODE_ENV === "production", 
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      maxAge: 1000 * 60 * 60 * 24,
     });
 
     res.send(sampleuser);
@@ -206,30 +205,32 @@ app.post("/GetEmail", verifyToken , async (req, res) => {
   });
 });
 // My dieary data handler 
-app.post("/MyDiary" , verifyToken , async (req , res)=> {
-  
-   console.log("Diary data is recieved",req.body);
-   data = req.body;  
-   let sampleData = new Diary(
-    { 
-      date : data.date,
-      heading : data.heading ,
-      text : data.text,
+app.post("/MyDiary", verifyToken, async (req, res) => {
+  try {
+    console.log("Diary data is received", req.body);
+    const data = req.body;
+
+    const sampleData = new Diary({
+      date: data.date,
+      heading: data.heading,
+      text: data.text,
       user: req.user.id,
-    }
-   )
-   await sampleData.save().then( ()=> {
-    console.log("the Diary data has been stored ")
-   })
-   .catch( (error)=> {
+    });
+
+    await sampleData.save();
+    console.log("The Diary data has been stored");
+
+    res.status(201).json({ message: "Data has been stored" });
+    console.log("res sent ")
+  } catch (error) {
+    console.error("Error storing diary:", error);
     res.status(500).json({
       success: false,
-      message: "The email could not be deleted due to a server issue.",
-      error: error.message, // optional: include actual error for frontend debugging
+      message: "The diary could not be stored due to a server issue.",
+      error: error.message,
     });
-   })
   }
-)
+});
 // Delete Data
 app.get("/delete" , async(req , res)=> {
     

@@ -5,12 +5,14 @@ import Card from "react-bootstrap/Card";
 import CardEm from "./CardEm";
 import "./ShowEmail.css";
 import axios from "axios";
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 function ShowEmail() {
   const [emails, setEmails] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://nostalgia-cijq.onrender.com/api/getEmail", {
+      .get(`${apiUrl}/api/getEmail`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -27,7 +29,7 @@ function ShowEmail() {
      if(!window.confirm("Delete this Email?")) return ;
 
      try {
-      await axios.delete(`https://nostalgia-cijq.onrender.com/api/deleteEmail/${id}`, {
+      await axios.delete(`${apiUrl}/api/deleteEmail/${id}`, {
         withCredentials: true
       }).catch( (err)=> {
          console.error(err);

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import axios from 'axios'
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 import {
   CButton,
   CCloseButton,
@@ -30,8 +32,11 @@ export const SmallNav = () => {
   
   let logout = async()=> {
     try {
-      await axios.post("http://localhost:8000/api/logout" , {} , {
-        withCredentials : true
+      await axios.post(`${apiUrl}/api/logout` , {} , {
+        withCredentials : true,
+        headers: {
+          "Content-Type": "application/json"
+        },
       })
       console.log("succesfully Loged out ")
       window.location.href = "/SignUp"

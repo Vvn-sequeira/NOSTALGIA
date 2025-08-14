@@ -10,6 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import GreenBtn from "../GreenBtn";
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 function EmailForm() {
 
   let minDate = new Date();
@@ -41,13 +43,15 @@ function EmailForm() {
     e.preventDefault();
 
     try {
-      let res = await axios.post("https://nostalgia-cijq.onrender.com/GetEmail", FormData ,{
+      let res = await axios.post(`${apiUrl}/GetEmail`, FormData ,{
         headers: {
           "Content-Type": "application/json"
         },
         withCredentials: true
       })
       console.log("res sent ", res);
+      clearState();
+      alert("Email has been Scheduled , you can view it in 'My data' ")
     } catch (error) {
       console.log("Caught error:", error);
       const errmsg = error.response?.data?.message || "Some error occurred. Try again or report it to the developer.";
@@ -55,7 +59,7 @@ function EmailForm() {
      clearState()
       return;
     }
-    clearState();
+   
   };
 
 

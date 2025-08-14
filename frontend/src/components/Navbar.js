@@ -8,29 +8,16 @@ import styled from "styled-components";
 import Container from "react-bootstrap/Container";
 import { Await, Link } from "react-router-dom";
 import { SmallNav } from "./smallNav";
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 import "./Navbar.css";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import {
-  CButton,
-  CCloseButton,
-  CContainer,
   CDropdown,
   CDropdownItem,
   CDropdownDivider,
   CDropdownMenu,
-  CDropdownToggle,
-  CForm,
-  CFormInput,
-  CNavbar,
-  CNavbarBrand,
-  CNavbarNav,
-  CNavbarToggler,
-  CNavItem,
-  CNavLink,
-  COffcanvas,
-  COffcanvasBody,
-  COffcanvasHeader,
-  COffcanvasTitle,
+  CDropdownToggle
 } from "@coreui/react";
 import axios from "axios";
 function Navbar() {
@@ -42,8 +29,11 @@ function Navbar() {
 
   let logout = async()=> {
     try {
-      await axios.post("https://nostalgia-cijq.onrender.com/api/logout" , {} , {
-        withCredentials : true
+      await axios.post(`${apiUrl}/api/logout` , {} , {
+        withCredentials : true,
+        headers: {
+          "Content-Type": "application/json"
+        },
       })
       console.log("succesfully Loged out ")
       window.location.href = "/SignUp"

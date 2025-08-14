@@ -5,7 +5,8 @@ import Form from "react-bootstrap/Form";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import GreenBtn from "../GreenBtn";
 import axios from "axios";
-
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 function WriteDairy() {
   const maxDate = new Date();
   const formatted = maxDate.toLocaleString("en-IN", {
@@ -30,10 +31,18 @@ function WriteDairy() {
   const OnSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://nostalgia-cijq.onrender.com/MyDiary", formData, {
-        withCredentials: true,
+      await axios.post(`${apiUrl}/MyDiary`, formData, {
+        withCredentials: true 
       });
       console.log("Res sent to the backend");
+      alert("Stored sucessfuly , Check you ' My Data ' to view your Diary ")
+      setFormData(
+        {
+          date: null,
+          heading: "",
+          text: "",
+        }
+      )
     } catch (error) {
       const errmsg =
         error.response?.data?.message ||

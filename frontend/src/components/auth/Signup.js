@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
+import "./auth.css"
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 let Signup = function(){
+  let [wait , setWait] = useState(false)
   let [formdata , setformData] = useState(
     {
        username: "",
@@ -19,9 +24,10 @@ let Signup = function(){
 
   let onsubmit = async(e)=> {
      e.preventDefault();
+     setWait(true)
     try {
-      await axios.post("https://nostalgia-cijq.onrender.com/signup" , formdata , {
-        withCredentials: true
+      await axios.post(`${apiUrl}/signup` , formdata , {
+        withCredentials: true 
        }) 
        console.log("the data has been sent to the backend ") 
   
@@ -34,9 +40,9 @@ let Signup = function(){
        )
 
       window.location.href = "/";
-
+      setWait(false)
     } catch (error) {
-      const errmsg = error.response?.data?.message || "User alredy exist"
+      const errmsg = error.response?.data?.message 
       alert(errmsg);
       setformData( 
         {
@@ -55,6 +61,9 @@ let Signup = function(){
         <Container className="centerdiv">
        
       <form className="form" onSubmit={onsubmit}>
+      <div className={wait ? "Load" : "stopLoad"}>
+        <Loading></Loading>
+      </div>
       <span className="input-span">
           <label htmlFor="email" className="label">Username</label>
           <input type="text" name="username" id="username" placeholder="eg: @vivi1234" onChange={onchange} value={formdata.username} required/></span>

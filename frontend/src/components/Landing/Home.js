@@ -3,6 +3,7 @@ import TextType from './TextType';
 import Tablett from "./Tablett";
 import HomeBtnn from "./HomeBtnn";
 import Cardd from "./Cardd";
+import AnimatedList from "./AnimatedList"
 function Home() {
   const items = [
     'Send birthday wishes automatically on the right date',
@@ -46,8 +47,8 @@ text = {[ "NOSTALGIA!", "EMAIL SCHEDULING", "YOUR DIARY" ]}
   <Cardd></Cardd>
 </div>
 
-{/* <div style={{color: "green" , fontSize: "19px" , marginLeft: "17px" , marginBottom: "16px " , marginTop: "14px ",textDecoration:"underline" , wordSpacing: "3px" , letterSpacing: "1px"}}>What's the Use Case ? </div> */}
-{/* <div className="List-small">
+<div style={{color: "green" , fontSize: "19px" , marginLeft: "17px" , marginBottom: "16px " , marginTop: "14px ",textDecoration:"underline" , wordSpacing: "3px" , letterSpacing: "1px"}}>What's the Use Case ? </div>
+ <div className="List-small">
 <AnimatedList
   items={items}
   onItemSelect={(item, index) => console.log(item, index)}
@@ -55,7 +56,7 @@ text = {[ "NOSTALGIA!", "EMAIL SCHEDULING", "YOUR DIARY" ]}
   enableArrowNavigation={true}
   displayScrollbar={true}
 />
-</div> */}
+</div>
 
 </div>
 

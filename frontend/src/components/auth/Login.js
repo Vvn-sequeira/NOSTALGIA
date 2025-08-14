@@ -3,7 +3,15 @@ import Container from "react-bootstrap/esm/Container";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loading from "./Loading";
+import { useNavigate } from "react-router-dom";
+import "./auth.css"
+
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 let Login = function(){
+  const navigate = useNavigate();
+  let [wait , setWait] = useState(false);
 
  let [form , setForm] = useState(
   {
@@ -16,28 +24,39 @@ let Login = function(){
     setForm( (prev)=> ({...prev , [e.target.name] : e.target.value}))
  }
 
-  let onsubmit = async()=> {
-    try {
-     await axios.post("https://nostalgia-cijq.onrender.com/login" , form , {
-       withCredentials : true 
-     }) 
-     alert("Login was Succesfull");
-     console.log("user Logged in ");
-    } catch (error) {
-      const errmsg = error.response?.data?.message || "Some error occurred. Try again or report it to the developer.";
-      alert(errmsg);
-      return;
-    }
+ let onsubmit = async (e) => {
+  e.preventDefault();
+  console.log("Login triggered");
+  setWait(true);
+  try {
+    const res = await axios.post(`${apiUrl}/login`, form, {
+      withCredentials: true
+    });
+    console.log("Response:", res);
+   // alert("Login was Succesfull");
+    console.log("user Logged in");
+   setWait(false);
+    navigate("/");
+    alert("login was succesfull")
+  } catch (error) {
+    console.error("Login error:", error);
+    const errmsg = error.response?.data?.message || "Some error occurred. Try again or report it to the developer.";
+    alert(errmsg);
+  }
+};
 
 
- }
      return(
         
         <>
          <StyledWrapper>
         <Container className="centerdiv">
-       
+
+
       <form className="form" onSubmit={onsubmit}>
+      <div className={wait ? "Load" : "stopLoad"}>
+        <Loading></Loading>
+      </div>
       <span className="input-span">
           <label htmlFor="email" className="label">Email</label>
           <input type="email" name="email" value={form.email} onChange={onchange} id="email" placeholder="enter your Email"/></span>

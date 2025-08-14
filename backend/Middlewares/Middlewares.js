@@ -25,7 +25,7 @@ module.exports.verifyToken = (req, res, next) => {
 
   if (!token) {
     console.log("No token found. User must log in.");
-    return res.status(500).json({
+    return res.status(401).json({
       success: false,
       message: "Authentication required. Please log in.",
     });
