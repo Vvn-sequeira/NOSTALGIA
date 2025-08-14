@@ -14,17 +14,15 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   URL = process.env.MONGO_URL;
 
-  app.options("/*", cors({
+  const cookieParser = require("cookie-parser")
+  app.use(cookieParser()); // Use cookieParser 
+
+
+  app.use(cors({
     origin: "https://nostalgia-theta.vercel.app",
     credentials: true
   }));
-  app.use(cors({
-    origin: "https://nostalgia-theta.vercel.app",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-  }));
-
+  
  
 
 app.use(bodyParser.json());
@@ -32,8 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); // Required to parse JSON bodies 
 
 
-const cookieParser = require("cookie-parser")
-app.use(cookieParser()); // Use cookieParser
+
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -71,8 +68,8 @@ app.post("/api/logout"   , verifyToken , (req, res)=> {
    
   res.clearCookie("token", {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+    secure: true,
+    sameSite:"None",
   });
   
      res.send("you are logged out ")
