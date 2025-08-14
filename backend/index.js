@@ -14,10 +14,19 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   URL = process.env.MONGO_URL;
 
-  app.use(cors({
+  app.options("*", cors({
     origin: "https://nostalgia-theta.vercel.app",
     credentials: true
   }));
+  
+  app.use(cors({
+    origin: "https://nostalgia-theta.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  }));
+
+ 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
