@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import "../ShowEmail/ShowEmail.css"
+import "../ShowEmail/ShowEmail.css";
+
 function CardDiary({TO , H1 , P , ondelete}) {
   return (
     <>

@@ -8,8 +8,6 @@ import styled from "styled-components";
 import Container from "react-bootstrap/Container";
 import { Await, Link } from "react-router-dom";
 import { SmallNav } from "./smallNav";
-const apiUrl = process.env.REACT_APP_API_URL;
-const isDebug = process.env.REACT_APP_DEBUG === "true";
 import "./Navbar.css";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import {
@@ -20,6 +18,11 @@ import {
   CDropdownToggle
 } from "@coreui/react";
 import axios from "axios";
+
+
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
+
 function Navbar() {
   let [selected, setSelected] = useState(100);
 

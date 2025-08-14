@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import CardEm from "./CardDiary";
 import "../ShowEmail/ShowEmail.css";
 import axios from "axios";
+
 const apiUrl = process.env.REACT_APP_API_URL;
 const isDebug = process.env.REACT_APP_DEBUG === "true";
 function ShowDiary() {

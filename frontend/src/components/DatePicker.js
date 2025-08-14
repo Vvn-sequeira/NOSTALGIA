@@ -1,6 +1,7 @@
 import React from "react";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import "./Forms/DateTime.css";
+
 function DatePicker(){
     let maxDate = new Date();
      return(

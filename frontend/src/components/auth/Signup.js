@@ -5,8 +5,10 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import "./auth.css"
+
 const apiUrl = process.env.REACT_APP_API_URL;
 const isDebug = process.env.REACT_APP_DEBUG === "true";
+
 let Signup = function(){
   let [wait , setWait] = useState(false)
   let [formdata , setformData] = useState(
