@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import '@coreui/coreui/dist/css/coreui.min.css'
 import axios from 'axios'
 
-const apiUrl = process.env.REACT_APP_API_URL;
-const isDebug = process.env.REACT_APP_DEBUG === "true";
+
 import {
   CButton,
   CCloseButton,
@@ -26,6 +25,9 @@ import {
   COffcanvasHeader,
   COffcanvasTitle,
 } from '@coreui/react'
+
+const apiUrl = process.env.REACT_APP_API_URL;
+const isDebug = process.env.REACT_APP_DEBUG === "true";
 
 export const SmallNav = () => {
   const [visible, setVisible] = useState(false)
