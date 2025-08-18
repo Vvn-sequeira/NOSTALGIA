@@ -14,6 +14,8 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   URL = process.env.MONGO_URL;
 
+  const { GoogleGenerativeAI } = require("@google/generative-ai");  // Ai 
+
   const cookieParser = require("cookie-parser")
   app.use(cookieParser()); // Use cookieParser 
 
@@ -25,6 +27,11 @@ const express = require("express"),
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); // Required to parse JSON bodies 
+
+app.use((req, res, next) => {
+  console.log(`Incoming: ${req.method} ${req.url}`);
+  next();
+});
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -356,3 +363,24 @@ app.delete("/api/deleteDiary/:id" , verifyToken ,  async(req, res)=> {
 })
 
 
+// AI 
+
+app.post("/api/Ai", async (req, res) => {
+  try {
+
+    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+    
+    // const prompt = `Write an email to my friend Bob for his 18th birthday. My name is Vivi. Timestamp: ${Date.now()}`;
+    const {prompt} = req.body;
+    const result = await model.generateContent(prompt);
+
+    const output = result.response.text();
+
+    res.send(output);
+    console.log(output);
+  } catch (error) {
+    console.error("Error generating content:", error);
+    res.status(500).send("Something went wrong");
+  }
+});

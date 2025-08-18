@@ -64,8 +64,8 @@ function Navbar() {
               </Link>
             </li>
             <li
-              onClick={() => activeNav(3)}
-              className={selected == 3 ? "active" : "nonactive"}
+              onClick={() => activeNav(1)}
+              className={selected == 1 ? "active" : "nonactive"}
             >
               {" "}
               <Link className="navLinks" to={"/GetEmail"}>
@@ -73,8 +73,17 @@ function Navbar() {
               </Link>
             </li>
             <li
-              onClick={() => activeNav(4)}
-              className={selected == 4 ? "active" : "nonactive"}
+              onClick={() => activeNav(2)}
+              className={selected == 2 ? "active" : "nonactive"}
+            >
+              {" "}
+              <Link className="navLinks" to={"/Ai"}>
+                AI email-writer
+              </Link>
+            </li>
+            <li
+              onClick={() => activeNav(3)}
+              className={selected == 3 ? "active" : "nonactive"}
             >
               {" "}
               <Link className="navLinks" to={"/WriteDairy"}>
