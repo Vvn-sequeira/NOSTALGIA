@@ -1,16 +1,12 @@
 import React, { use, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
-import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
-import GreenBtn from "../GreenBtn";
 import axios from "axios";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import AiButton from "./AiButton";
-import CopyBtn from "./CopyBtn";
 import Button from 'react-bootstrap/Button';
 const apiUrl = process.env.REACT_APP_API_URL;
-const isDebug = process.env.REACT_APP_DEBUG === "true";
 const AiEmail = () => {
   const [formData, setFormData] = useState("");
   const [Aires, setAiRes] = useState("");

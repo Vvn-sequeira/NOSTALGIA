@@ -365,7 +365,7 @@ app.delete("/api/deleteDiary/:id" , verifyToken ,  async(req, res)=> {
 
 // AI 
 
-app.post("/api/Ai", async (req, res) => {
+app.post("/api/Ai", verifyToken , async (req, res) => {
   try {
 
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_KEY);
