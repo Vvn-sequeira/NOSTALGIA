@@ -13,7 +13,9 @@ function SafeEmail() {
     setResult(null);
 
     try {
-      const res = await axios.post(`${apiUrl}/haveibeenpawned`, { email });
+      const res = await axios.post(`${apiUrl}/haveibeenpawned`, { email } , {
+        withCredentials: true 
+      }) ;
       setResult(res.data);
     } catch (error) {
       setResult({
