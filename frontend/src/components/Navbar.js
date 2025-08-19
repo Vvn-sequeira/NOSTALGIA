@@ -78,7 +78,16 @@ function Navbar() {
             >
               {" "}
               <Link className="navLinks" to={"/Ai"}>
-                AI email-writer
+                 AI 
+              </Link>
+            </li>
+            <li
+              onClick={() => activeNav(4)}
+              className={selected == 4 ? "active" : "nonactive"}
+            >
+              {" "}
+              <Link className="navLinks" to={"/amisafe"}>
+                 AmIsafe ?
               </Link>
             </li>
             <li

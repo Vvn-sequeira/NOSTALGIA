@@ -32,11 +32,21 @@ const  HomeBtnn = ()=>{
                 </div>
                 </Col>
                 <Col>
-                <div style={{cursor: "not-allowed"}} className="home-btn-body">
+                <div style={{cursor: "pointer"}} className="home-btn-body">
                     <div className="home-btn-heading">
-                           <h3>Explore</h3>
-                        <div className="home-btn-small">
-                            <small>Good Old Days </small>
+                    <Link to={"/WriteDairy"} style={{textDecoration : "none" , textAlign : "center"}}><h3> Use AI</h3></Link>
+                        <div className="home-btn-small" style={{textAlign : "center"}}>
+                            <small>Use our AI </small>
+                        </div>
+                    </div>
+                </div>
+                </Col>
+                <Col>
+                <div style={{cursor: "pointer"}} className="home-btn-body">
+                    <div className="home-btn-heading" style={{textAlign : "center"}} >
+                    <Link to={"/WriteDairy"} style={{textDecoration : "none"}}><h3>Am I Safe ?</h3></Link>
+                        <div className="home-btn-small" style={{textAlign : "center"}}>
+                            <small>Are you really Safe ?  </small>
                         </div>
                     </div>
                 </div>

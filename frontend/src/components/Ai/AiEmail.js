@@ -13,7 +13,6 @@ const AiEmail = () => {
   const [copy , copied ] = useState(false);
   const OnSubmit = async (e) => {
     e.preventDefault();
-    console.log(apiUrl);
     try {
       const res = await axios.post(
         `${apiUrl}/api/Ai`,

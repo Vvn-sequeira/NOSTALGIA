@@ -12,6 +12,7 @@ import Signup from "./components/auth/Signup";
 import Login from './components/auth/Login';
 import ShowDiary from './components/ShowDiary/ShowDiary';
 import AiEmail from './components/Ai/AiEmail';
+import SafeEmail from './components/SafeEmail';
 // Registering Syncfusion<sup style="font-size:70%">&reg;</sup> license key
 registerLicense("Ngo9BigBOggjHTQxAR8/V1JEaF5cWWJCdkx0Q3xbf1x1ZF1MZFtbR3VPMyBoS35Rc0VkW3heeHBcQ2JUVkdxVEFd");
 
@@ -29,6 +30,7 @@ function App() {
         <Route path='/Login' element={<Login></Login>}></Route>
         <Route path='/logout' element={<Home></Home>}></Route>
         <Route path='/Ai' element={<AiEmail></AiEmail>}></Route>
+        <Route path='/amisafe' element={<SafeEmail></SafeEmail>}></Route>
         <Route path='/' element={<Home></Home>}></Route>
        </Routes>
        <Footer></Footer>

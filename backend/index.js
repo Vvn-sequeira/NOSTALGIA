@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { default: axios } = require("axios");
 
 function compareAsync(password, hash) {
   return new Promise((resolve, reject) => {
@@ -362,9 +363,7 @@ app.delete("/api/deleteDiary/:id" , verifyToken ,  async(req, res)=> {
 
 })
 
-
 // AI 
-
 app.post("/api/Ai", verifyToken , async (req, res) => {
   try {
 
@@ -384,3 +383,33 @@ app.post("/api/Ai", verifyToken , async (req, res) => {
     res.status(500).send("Something went wrong");
   }
 });
+
+app.post("/haveibeenpawned", verifyToken ,  async (req, res) => {
+  const { email } = req.body;
+  console.log("📩 Incoming email:", email);
+
+  if (!email) {
+    return res.status(400).json({ error: "Email is required" });
+  }
+
+  try {
+    const response = await axios.get("https://breachdirectory.p.rapidapi.com/", {
+      params: { func: "auto", term: email }, 
+      headers: {
+        "x-rapidapi-host": "breachdirectory.p.rapidapi.com",
+        "x-rapidapi-key": process.env.RAPIDAPI_KEY,
+      },
+    });
+
+    console.log("✅ RapidAPI response:", response.data);
+    res.json(response.data);
+
+  } catch (error) {
+    console.error("❌ RapidAPI error:", error.response?.data || error.message);
+
+    res.status(500).json({
+      error: "Server error. Please try again later.",
+    });
+  }
+});
+

@@ -53,7 +53,7 @@ export const SmallNav = () => {
   return (
     <CNavbar className=""  style={{backgroundColor : "#19bdaa" , color: "black"}} >
       <CContainer fluid >
-        <CNavbarBrand  style={{color : "black" , fontWeight: "700"}} >Nostalgia</CNavbarBrand>
+        <CNavbarBrand  style={{color : "black" , fontWeight: "700"}} >Flowmate</CNavbarBrand>
         <CNavbarToggler
           aria-controls="offcanvasNavbar"
           aria-label="Toggle navigation"
@@ -68,7 +68,7 @@ export const SmallNav = () => {
           onHide={() => setVisible(false)}
         >
           <COffcanvasHeader style={{backgroundColor : "#19bdaa" , color: "black" }}>
-            <COffcanvasTitle style={{ color: "black" , fontWeight: "700"}} >Nostalgia</COffcanvasTitle>
+            <COffcanvasTitle style={{ color: "black" , fontWeight: "700"}} >Flowmate</COffcanvasTitle>
             <CCloseButton className="text-reset" onClick={() => setVisible(false)}   style={{backgroundColor: "transparent" , border: "none" , boxShadow: "none"  }} />
           </COffcanvasHeader>
           <COffcanvasBody>
@@ -85,7 +85,12 @@ export const SmallNav = () => {
               </CNavItem>
               <CNavItem>
                 <CNavLink href="/Ai" style={{color: "black"}}  >
-                 Ai Email-writer
+                 Ai-writer
+                </CNavLink>
+              </CNavItem>
+              <CNavItem>
+                <CNavLink href="/amisafe" style={{color: "black"}}  >
+                 Am I safe ?
                 </CNavLink>
               </CNavItem>
               <CNavItem>

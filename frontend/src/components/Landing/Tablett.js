@@ -9,7 +9,7 @@ const Tablett = () => {
       <div className="tablet">
         <div ref={containerRef} style={{ position: "relative" }}>
           <VariableProximity
-            label={"NOSTALGIA!!"}
+            label={"Flowmate!!"}
             className={"variable-proximity-demo"}
             fromFontVariationSettings="'wght' 400, 'opsz' 9"
             toFontVariationSettings="'wght' 1000, 'opsz' 40"

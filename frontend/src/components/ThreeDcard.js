@@ -18,7 +18,7 @@ function ThreeD() {
 <div class="parent">
   <div class="carD">
     <div class="content-box">
-      <span class="card-title">NOSTALGIA</span>
+      <span class="card-title">Flowmate</span>
       <p class="card-content">
       Scheduling emails and writing diaries—quiet echoes of yesterday, gently shaping tomorrow.      </p>
       <span class="see-more"> <Toottip></Toottip>  </span>
