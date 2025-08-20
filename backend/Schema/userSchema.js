@@ -6,6 +6,7 @@ let userSchema = new Schema(
           username : String,
           email : String, 
           password : String,
+          PNOO : String , 
           user : {
           type :   Schema.Types.ObjectId ,
           ref : 'user'
