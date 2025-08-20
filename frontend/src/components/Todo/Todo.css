@@ -1,0 +1,142 @@
+.TodoSet{
+     border: 2px solid green ;
+     border-radius: 6px;
+     padding: 12px ;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: rgba(16, 238, 16, 0.193);
+
+}
+.col{
+     margin-top: 12px ;
+}
+.Todo-button{
+    margin-top: -12px ;
+    height: 80%;
+    width: 80%;
+    box-shadow: none;
+}
+
+.write-dairy-form{
+    margin-top: 1rem ;
+    margin-bottom: 1rem ;
+}
+.write-dairy-Date{
+    display: flex ;
+    flex-direction: row-reverse;
+     margin-bottom: 1.5rem;
+}
+
+
+.ShowTodoCol{
+      margin-left: 14px ;     
+    
+      
+}
+.ShowtodoRow{
+    border-bottom: 1px solid rgb(13, 225, 17);
+    padding: 14px ;
+} 
+
+.Done{
+     cursor: not-allowed;
+     background-color: gray !important;
+}
+.Done .doneIcon{
+    display: none ;
+}
+
+.showTodoBox {
+   
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 15px;
+    background: linear-gradient(to right, #0abd408f, transparent, #07ba6063);
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .showTodoRow {
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    background: #4abb1230;
+    border: 2px solid black;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .showTodoRow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.453);
+  }
+  
+  .showTodoCol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .todoText {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    word-break: break-word;
+  }
+  
+  .actionIcon {
+    cursor: pointer;
+    margin: 0;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .actionIcon:hover {
+    transform: scale(1.2);
+  }
+  
+  .deleteIcon {
+    color: #ff4d4d;
+  }
+  
+  .doneIcon {
+    color: #28a745;
+  }
+  
+  /* Mobile-friendly */
+  @media (max-width: 576px) {
+    .todoText {
+      font-size: 0.9rem;
+    }
+    .actionIcon {
+      font-size: 1rem;
+    }
+  }
+  
+
+
+
+
+
+
+@media (max-width: 413px ) {
+    .Todo-button{
+        margin-top: -12px ;
+        height: 100%;
+        width: 100%;
+    }
+    .TodoSet{
+
+        border: 2px solid green ;
+        border-radius: 6px;
+        padding: 5px ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+   
+   }
+}

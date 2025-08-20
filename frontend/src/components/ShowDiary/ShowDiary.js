@@ -5,7 +5,6 @@ import "../ShowEmail/ShowEmail.css";
 import axios from "axios";
 
 const apiUrl = process.env.REACT_APP_API_URL;
-const isDebug = process.env.REACT_APP_DEBUG === "true";
 function ShowDiary() {
   const [diary, setdiary] = useState([]);
 

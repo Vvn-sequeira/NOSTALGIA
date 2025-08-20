@@ -99,6 +99,15 @@ function Navbar() {
                 Personal dairy
               </Link>
             </li>
+            <li
+              onClick={() => activeNav(8)}
+              className={selected == 8 ? "active" : "nonactive"}
+            >
+              {" "}
+              <Link className="navLinks" to={"/Settodo"}>
+                 Todo 
+              </Link>
+            </li>
             <li>
               <CDropdown variant="nav-item" popper={false}>
                 <CDropdownToggle color="secondary">My Data</CDropdownToggle>

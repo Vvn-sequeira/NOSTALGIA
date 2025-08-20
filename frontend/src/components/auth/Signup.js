@@ -15,7 +15,8 @@ let Signup = function(){
     {
        username: "",
        email : "", 
-       password : ""
+       password : "",
+       PNO : "+91" 
     }
   )
 
@@ -37,7 +38,8 @@ let Signup = function(){
         {
           username: "",
           email : "", 
-          password : ""
+          password : "",
+          PNO : "+91"
         }
        )
 
@@ -50,7 +52,8 @@ let Signup = function(){
         {
           username: "",
           email : "", 
-          password : ""
+          password : "",
+          PNO : "+91"
         }
        )
       return ;
@@ -69,6 +72,9 @@ let Signup = function(){
       <span className="input-span">
           <label htmlFor="email" className="label">Username</label>
           <input type="text" name="username" id="username" placeholder="eg: @vivi1234" onChange={onchange} value={formdata.username} required/></span>
+      <span className="input-span">
+          <label htmlFor="email" className="label">Phone No <small>(please enter Country Code too)</small> </label>
+          <input type="text" name="PNO" id="PNO" placeholder="eg: +917676....." onChange={onchange} value={formdata.PNO} required/></span>
         <span className="input-span">
           <label htmlFor="email" className="label">Email</label>
           <input type="email" name="email" id="email" placeholder="Eg : vivi@xx.com"  onChange={onchange} value={formdata.email} required /></span>

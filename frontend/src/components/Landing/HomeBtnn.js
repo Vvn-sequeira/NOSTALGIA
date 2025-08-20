@@ -34,7 +34,7 @@ const  HomeBtnn = ()=>{
                 <Col>
                 <div style={{cursor: "pointer"}} className="home-btn-body">
                     <div className="home-btn-heading">
-                    <Link to={"/WriteDairy"} style={{textDecoration : "none" , textAlign : "center"}}><h3> Use AI</h3></Link>
+                    <Link to={"/Ai"} style={{textDecoration : "none" , textAlign : "center"}}><h3> Use AI</h3></Link>
                         <div className="home-btn-small" style={{textAlign : "center"}}>
                             <small>Use our AI </small>
                         </div>

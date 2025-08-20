@@ -84,6 +84,11 @@ export const SmallNav = () => {
                 </CNavLink>
               </CNavItem>
               <CNavItem>
+                <CNavLink href="/Settodo" style={{color: "black"}}  >
+                  Todo List
+                </CNavLink>
+              </CNavItem>
+              <CNavItem>
                 <CNavLink href="/Ai" style={{color: "black"}}  >
                  Ai-writer
                 </CNavLink>
