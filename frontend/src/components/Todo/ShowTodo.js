@@ -9,17 +9,18 @@ const ShowTodo= ()=> {
 
     const [data , setData] = useState([]);
 
+    const fetchTodos = async () => {
+      try {
+        const resp = await axios.get(`${apiUrl}/getTodoList` , {
+            withCredentials: true
+        });
+        setData(resp.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     useEffect(() => {
-        const fetchTodos = async () => {
-          try {
-            const resp = await axios.get(`${apiUrl}/getTodoList` , {
-                withCredentials: true
-            });
-            setData(resp.data);
-          } catch (error) {
-            console.log(error);
-          }
-        };
         fetchTodos();
       }, []);
       
@@ -39,7 +40,7 @@ const ShowTodo= ()=> {
         setData( prew=> prew.filter(todo =>  todo._id != id ));
         console.log("after setData")
 
-        window.location.reload();
+        // window.location.reload();
     }
 
     const handleDone = async(id)=> {
@@ -47,6 +48,8 @@ const ShowTodo= ()=> {
         await axios.put(`${apiUrl}/todo/updateTodo/${id}` , {
             withCredentials: true 
         })
+        alert("Congrats on completing the task! 🎉 Keep going!")
+        fetchTodos()
         .catch( (err)=> {
              alert(err);
         })

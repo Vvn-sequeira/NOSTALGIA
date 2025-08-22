@@ -26,7 +26,7 @@ const AiEmail = () => {
       );
       setAiRes(res.data);
       console.log("the req has been sent to the backend ");
-      alert("the req is sent ");
+      alert(" Wait For the reply please ");
       setFormData("");
     } catch (error) {
       alert("some err occured try again or else contact the developer");
@@ -79,7 +79,7 @@ const AiEmail = () => {
                 />
               </Form.Group>
             </Col>
-            <Col>
+            <Col style={{marginTop: "1px"}}>
               <AiButton></AiButton>
             </Col>
           </Row>
@@ -89,7 +89,7 @@ const AiEmail = () => {
               className="write-dairy-input"
               as="textarea"
               rows={19}
-              placeholder="Wait for the reply"
+              placeholder="Wait for the AI reply"
               value={Aires}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, text: e.target.value }))
@@ -101,10 +101,10 @@ const AiEmail = () => {
           {/* <Col>
             <CopyBtn toCopy={Aires}></CopyBtn>
           </Col> */}
-          <Col lg={2} md={3} xs={6}>
+          <Col lg={2} md={3} xs={6} style={{marginTop: "36px"}}>
           <Button onClick={handleCopy} variant="outline-primary"> {!copy ? "Copy text" : "Copied"}</Button>
           </Col>
-          <Col>
+          <Col style={{marginTop: "37px"}}>
           <Button onClick={handleClear} variant="outline-danger">Clear</Button>
           </Col>
         </Row>

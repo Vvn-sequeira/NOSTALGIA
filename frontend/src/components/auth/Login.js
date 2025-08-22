@@ -63,7 +63,7 @@ let Login = function(){
         <span className="input-span">
           <label htmlFor="password" className="label">Password</label>
           <input type="password" name="password" value={form.password} onChange={onchange} id="password" placeholder="Enter your password"/></span>
-        <span className="span"><a href="#">Dont't Forget your Pawword</a></span>
+        <span className="span"><a href="#"> Forgot your Password ? </a></span>
         <input className="submit" type="submit" defaultValue="Log in" />
         <span className="span">Don't you have an acc ?  <Link to={"/SignUp"}>SignUp</Link></span>
       </form>

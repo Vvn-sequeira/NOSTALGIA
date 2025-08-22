@@ -78,7 +78,7 @@ function Navbar() {
             >
               {" "}
               <Link className="navLinks" to={"/Ai"}>
-                 AI 
+              Smart Pal 
               </Link>
             </li>
             <li

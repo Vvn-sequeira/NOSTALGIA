@@ -27,6 +27,8 @@ const SetTodo = ()=> {
       todo: "",
     });
   
+
+
     const OnchangeDate = (e) => {
            try {
             const UTC = new Date(e.value).toISOString();
@@ -50,6 +52,7 @@ const SetTodo = ()=> {
             todo: "",
           }
         )
+        window.location.reload() 
       } catch (error) {
         const errmsg =
           error.response?.data?.message ||

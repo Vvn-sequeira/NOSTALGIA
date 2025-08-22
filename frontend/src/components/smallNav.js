@@ -80,7 +80,7 @@ export const SmallNav = () => {
               </CNavItem>
               <CNavItem>
                 <CNavLink href="/GetEmail" style={{color: "black"}}  >
-                  Schdule Email
+                  Schedule your Email
                 </CNavLink>
               </CNavItem>
               <CNavItem>
@@ -90,7 +90,7 @@ export const SmallNav = () => {
               </CNavItem>
               <CNavItem>
                 <CNavLink href="/Ai" style={{color: "black"}}  >
-                 Ai-writer
+                Smart Pal
                 </CNavLink>
               </CNavItem>
               <CNavItem>
