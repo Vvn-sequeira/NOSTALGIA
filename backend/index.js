@@ -460,7 +460,7 @@ cron.schedule(" * * * * * ", async (req, res) => {
       });
       console.log("the mag has been sent to");
 
-      await Todo.updateOne({ _id: data.id }, { $set: { done: true } });
+      // await Todo.updateOne({ _id: data.id }, { $set: { done: true } });
       console.log("the todo is updated ");
     } catch (error) {
       console.error("Error sending message:", error);
