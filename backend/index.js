@@ -387,10 +387,10 @@ app.post("/haveibeenpawned", verifyToken, async (req, res) => {
       }
     );
 
-    console.log("✅ RapidAPI response:", response.data);
+    console.log(" RapidAPI response:", response.data);
     res.json(response.data);
   } catch (error) {
-    console.error("❌ RapidAPI error:", error.response?.data || error.message);
+    console.error(" RapidAPI error:", error.response?.data || error.message);
 
     res.status(500).json({
       error: "Server error. Please try again later.",
