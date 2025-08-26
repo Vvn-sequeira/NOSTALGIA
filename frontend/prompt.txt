@@ -1,0 +1,32 @@
+{ Email prompt , vvn }
+write an Email to my friend wishing him on his 18th birthday add html css make it look good  , (  and PLEASE don't give extra text ) 
+
+{ diary prompt }
+So today i had a great day and today we have IT expo in our college i am so excited ( please elaborate My diary  with just one Paragraph of text ) 
+
+
+***************************************************************
+{
+{ Email , sujeet }
+
+
+ Subject: Happy 18th Birthday, Eric!
+ Hey Eric,
+
+Happy 18th birthday! Wow, you're officially an adult now! Time flies, doesn't it?
+
+I can't believe you're finally 18. It feels like just yesterday we were
+I hope you have an absolutely amazing day filled with everything you wished for. Make sure to celebrate properly! Are you doing anything special?
+
+I'm really glad to have you as a friend, and I'm looking forward to seeing what amazing things you do in this next chapter of your life.
+
+Have a fantastic birthday, Eric! Let's catch up soon and celebrate properly.
+
+Best wishes,
+
+VVN
+
+
+
+}
+********************************************************************
