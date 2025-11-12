@@ -15,7 +15,7 @@ import AiEmail from './components/Ai/AiEmail';
 import SafeEmail from './components/SafeEmail';
 import SetTodo from './components/Todo/SetTodo';
 // Registering Syncfusion<sup style="font-size:70%">&reg;</sup> license key
-registerLicense("Ngo9BigBOggjHTQxAR8/V1JEaF5cWWJCdkx0Q3xbf1x1ZF1MZFtbR3VPMyBoS35Rc0VkW3heeHBcQ2JUVkdxVEFd");
+registerLicense("Ngo9BigBOggjHTQxAR8/V1JFaF1cX2hIfEx3R3xbf1x1ZFREallTTnVWUiweQnxTdEBiWH5ccHRQRGRfUkB+WUleYg==");
 
 function App() {
   return (
